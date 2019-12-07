@@ -1,0 +1,294 @@
+#BillsApp {
+  background: rgb(135,128,255);
+  background: linear-gradient(90deg, rgba(135,128,255,1) 0%, rgba(0,212,255,1) 100%);
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #eee;
+    }
+  }
+  #AllBills {
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    -webkit-box-shadow: 0px 10px 31px -9px rgba(173,173,173,1);
+    -moz-box-shadow: 0px 10px 31px -9px rgba(173,173,173,1);
+    box-shadow: 0px 10px 31px -9px rgba(173,173,173,1);
+    height: calc(100vh - 69px);
+    overflow-y: scroll;
+    .container {
+      width: 90%;
+      padding: 0 20px;
+      .total-bills {
+        color: #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 20px 0;
+        .text {
+          font-size: 1.3rem;
+        }
+        .number {
+          font-size: 1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 300;
+        }
+      }
+      .bills-list {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        .bill {
+          display: flex;
+          justify-content: space-between;
+          padding: 20px;
+          border-bottom: 1px solid #cecece;
+          position: relative;
+          overflow: hidden;
+          height: 62px;
+          background: #fff;
+          &.active {
+            background: #a6f441;
+          }
+          &:hover {
+            .buttons {
+              transform: translate3d(0,0,0);
+            }
+          }
+          &:last-child {
+            border: none;
+          }
+          .company {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .logo {
+              img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+              }
+            }
+            .title {
+              font-size: 1.1rem;
+              font-weight: 500;
+              text-transform: capitalize;
+              margin-left: 20px;
+              color: rgb(61, 61, 61);;
+            }
+          }
+          .price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(126, 126, 126);
+          }
+          .buttons {
+            display: flex;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 100px;
+            text-transform: capitalize;
+            transform: translate3d(100%,0,0);
+            transition: transform .4s ease-in-out;
+            cursor: pointer;
+          }
+          .paid {
+            background: #a6f441;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            color: #fff;
+          }
+          .delete {
+            background: #f44242;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+  .content-background {
+    background: #e8e8e8;
+    height: 77vh;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+  }
+}
+
+
+#FloatingMenu {
+  background: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  width: 92%;
+  z-index: 100;
+  -webkit-box-shadow: 0px -10px 31px -9px rgba(173,173,173,1);
+  -moz-box-shadow: 0px -10px 31px -9px rgba(173,173,173,1);
+  box-shadow: 0px -10px 31px -9px rgba(173,173,173,1);
+  .link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    &:hover {
+      background: linear-gradient(90deg, rgba(135,128,255,1) 0%, rgba(0,212,255,1) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      .far:before, .fas:before {
+        background: linear-gradient(90deg, rgba(135,128,255,1) 0%, rgba(0,212,255,1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+      }
+      &:last-child {
+        .far:before, .fas:before {
+          background: #eee;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          text-align: center;
+        }
+      }
+    }
+    
+  }
+  .add-button {
+    background: linear-gradient(90deg, rgba(135,128,255,1) 0%, rgba(0,212,255,1) 100%);
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      top: 3px;
+      left: -1px;
+    }
+  }
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: rgb(201, 201, 201);
+      transition: all .4s ease-in-out;
+    }
+    .text {
+      font-size: .8rem;
+      text-transform: capitalize;
+      color: rgb(201, 201, 201);
+      transition: all .4s ease-in-out;
+    }
+}
+
+
+#AddBill {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(135,128,255,1) 0%, rgba(0,212,255,1) 100%);
+  z-index: 5;
+  overflow: hidden;
+  transform: translate3d(100%, 0, 0);
+  transition: transform .4s ease-in-out;
+  &.active {
+    transform: translate3d(0, 0, 0);
+  }
+  .container {
+    padding: 0 20px;
+    h2 {
+      font-size: 2rem;
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 2rem 0;
+    }
+    .form-group {
+      margin: 0 0 1.5rem;
+    }
+    label {
+      display: block;
+      color: #fff;
+      font-size: .8rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    input {
+      display: block;
+      background: transparent;
+      border: 1px solid #fff;
+      font-size: 1.1rem;
+      padding: 7px;
+      color: #fff;
+      width: 94%;
+      &:focus {
+        outline: 0;
+      }
+    }
+    button {
+      background: #fff;
+      border: none;
+      font-size: .9rem;
+      width: 100%;
+      padding: 10px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+
+
+
+
+@media only screen and (min-width: 600px) {
+  #BillsApp {
+    width: 324px;
+    height: 600px;
+    border-radius: 15px;
+    .content-background {
+      height: 430px;
+    }
+  }
+  #app {
+    background: black;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+
+
